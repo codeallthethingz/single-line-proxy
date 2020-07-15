@@ -1,0 +1,21 @@
+{
+  "name": "single-line-proxy",
+  "version": "1.0.2",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "slp": "./index.js"
+  },
+  "repository": {
+    "url": "https://github.com/codeallthethingz/single-line-proxy"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "node-simple-proxy": "^1.0.0"
+  }
+}
