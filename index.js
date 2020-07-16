@@ -1,10 +1,9 @@
 #!/usr/bin/env node
 const http = require('http')
-const simpleProxy = require('node-simple-proxy')
+const simpleProxy = require('./proxy')
 const chalk = require('chalk')
 const { exception } = require('console')
 let port = 8000
-
 let args = process.argv.slice(2)
 
 let target = {}
@@ -27,7 +26,6 @@ for (arg of args) {
 
 console.log(`listening on: ${chalk.green(port)}`)
 const proxyServer = http.createServer((req, res) => {
-    // you can add custom logic here
     simpleProxy(req, res, {
         target: target
     });
