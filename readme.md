@@ -1,6 +1,6 @@
 # Single Line Proxy
 
-Command line utility to create a command line proxy.  
+Command line utility to create a proxy.  
 
 ## Usage
 
