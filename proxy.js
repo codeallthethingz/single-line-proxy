@@ -18,7 +18,8 @@ module.exports = (req, res, options) => {
     hostname,
     port,
     path: req.url,
-    headers: req.headers
+    headers: req.headers,
+    method: req.method
   }
   const id = `${req.method} ${req.url} => ${hostname}:${port}`;
   const req2 = http.request(reqOptions, res2 => {
