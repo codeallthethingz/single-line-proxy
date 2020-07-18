@@ -1,6 +1,6 @@
 {
   "name": "single-line-proxy",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "",
   "main": "index.js",
   "bin": {
@@ -15,6 +15,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "chalk": "^4.1.0"
+    "chalk": "^4.1.0",
+    "path-to-regexp": "^6.1.0"
   }
 }
