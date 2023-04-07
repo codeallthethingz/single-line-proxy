@@ -39,7 +39,7 @@ async function start() {
 
   // iterate over targets
   for (let [key, value] of Object.entries(targets)) {
-    process.stdout.write(`mapping ${chalk.blue(key)} -> ${chalk.blueBright(value)} `)
+    process.stdout.write(`mapping ${chalk.greenBright(key)} -> ${chalk.blueBright(value)} `)
     let i = 0
     for (i = 0; i < 10; i++) {
       try {
