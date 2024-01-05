@@ -1,5 +1,6 @@
 const http = require('http')
 const pathToRegexp = require('path-to-regexp')
+const chalk = require('chalk')
 
 module.exports = (req, res, options) => {
   const { target, protocol = 'http:', verbose = false } = options
@@ -14,13 +15,27 @@ module.exports = (req, res, options) => {
     headers: req.headers,
     method: req.method,
   }
-  const id = `${req.method} ${req.url} => ${hostname}:${port}`
+
   const req2 = http.request(reqOptions, (res2) => {
     if (verbose) {
-      console.log('[%s]: %s', id, res2.statusCode)
+      const host = hostname === 'localhost' ? '' : hostname
+      const id = `${req.method} ${req.url} => ${host}:${port}`
+      const c = chalk.greenBright
+      // if non 2xx code, use red
+      if (res2.statusCode >= 300) {
+        c = chalk.redBright
+      }
+      console.log(`${chalk.yellow('slp:')} ${id} [${c(res2.statusCode)}]`)
     }
     res.writeHead(res2.statusCode, res2.headers)
     res2.pipe(res)
   })
+
+  req2.on('error', (e) => {
+    console.error(`${chalk.red(e.message)}`)
+    res.writeHead(500)
+    res.end()
+  })
+
   req.pipe(req2)
 }

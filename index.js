@@ -61,14 +61,13 @@ async function start() {
   }
   console.log(`${chalk.yellow('slp:')} listening on: ${chalk.green(port)}`)
 
-  http
-    .createServer((req, res) => {
-      simpleProxy(req, res, {
-        target: targets,
-        verbose: verbose,
-      })
+  let server = http.createServer((req, res) => {
+    simpleProxy(req, res, {
+      target: targets,
+      verbose: verbose,
     })
-    .listen(port)
+  })
+  server.listen(port)
 }
 
 async function delay(ms) {
