@@ -60,14 +60,17 @@ async function start() {
     console.log(chalk.green('✓'))
   }
   console.log(`listening on: ${chalk.green(port)}`)
-  const proxyServer = await http
-    .createServer((req, res) => {
-      simpleProxy(req, res, {
-        target: targets,
-        verbose: verbose,
+  // infinte loop
+  for (;;) {
+    const proxyServer = await http
+      .createServer((req, res) => {
+        simpleProxy(req, res, {
+          target: targets,
+          verbose: verbose,
+        })
       })
-    })
-    .listen(port)
+      .listen(port)
+  }
 }
 
 async function delay(ms) {
