@@ -39,7 +39,7 @@ async function start() {
 
   // iterate over targets
   for (let [key, value] of Object.entries(targets)) {
-    process.stdout.write(`mapping ${chalk.greenBright(key)} -> ${chalk.blueBright(value)} `)
+    process.stdout.write(`${chalk.yellow('slp:')} mapping ${chalk.greenBright(key)} -> ${chalk.blueBright(value)} `)
     let i = 0
     for (i = 0; i < 10; i++) {
       try {
@@ -59,7 +59,7 @@ async function start() {
     // log green checkmark
     console.log(chalk.green('✓'))
   }
-  console.log(`listening on: ${chalk.green(port)}`)
+  console.log(`${chalk.yellow('slp:')} listening on: ${chalk.green(port)}`)
   // infinte loop
   for (;;) {
     const proxyServer = await http
