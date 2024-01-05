@@ -20,9 +20,12 @@ module.exports = (req, res, options) => {
     if (verbose) {
       const host = hostname === 'localhost' ? '' : hostname
       const id = `${req.method} ${req.url} => ${host}:${port}`
-      const c = chalk.greenBright
+      let c = chalk.greenBright
       // if non 2xx code, use red
       if (res2.statusCode >= 300) {
+        c = chalk.yellowBright
+      }
+      if (res2.statusCode >= 400) {
         c = chalk.redBright
       }
       console.log(`${chalk.yellow('slp:')} ${id} [${c(res2.statusCode)}]`)
